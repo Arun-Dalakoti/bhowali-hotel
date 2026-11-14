@@ -71,7 +71,7 @@ In `src/content/site.ts`, add an entry to `photos` whose `media` is a video:
 },
 ```
 
-Put the file in `public/videos/`. `src/components/room-media.tsx` already renders it.
+Put the file in `public/videos/`. `src/components/photo-slider.tsx` already plays it, and the slider stops changing while a video plays.
 Keep videos short and compressed (H.264 MP4, 720p, a few MB): most visitors are on mobile data in the hills.
 
 ## Design notes

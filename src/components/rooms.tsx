@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 import { CallButton, WhatsAppButton } from "./contact-buttons";
-import { RoomMediaView } from "./room-media";
+import { PhotoSlider } from "./photo-slider";
 
 /** Photos of the rooms and the guest house. Room types and prices are confirmed on a call, not listed here. */
 export function Rooms() {
@@ -14,18 +14,9 @@ export function Rooms() {
         </p>
       </div>
 
-      <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2">
-        {site.photos.map((photo) => (
-          <li key={photo.media.src}>
-            <figure className="group">
-              <div className="relative aspect-4/3 overflow-hidden rounded-card bg-pine-100 shadow-lift">
-                <RoomMediaView media={photo.media} />
-              </div>
-              <figcaption className="mt-3 text-stone">{photo.caption}</figcaption>
-            </figure>
-          </li>
-        ))}
-      </ul>
+      <div className="mt-12">
+        <PhotoSlider photos={site.photos} />
+      </div>
 
       <div className="mt-12 flex flex-col gap-3 sm:flex-row">
         <CallButton />

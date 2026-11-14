@@ -76,12 +76,36 @@ export const site = {
       media: { type: "image", src: "/images/room-circles.jpg", alt: "Guest room with a double bed, a side cabinet and a black and white tiled floor" },
     },
     {
+      caption: "Balcony seating",
+      media: { type: "image", src: "/images/balcony.jpg", alt: "Balcony with a green table and two chairs in the morning sun" },
+    },
+    {
       caption: "Room with a window to the street",
       media: { type: "image", src: "/images/room-chevron.jpg", alt: "Guest room with a double bed beside a curtained window" },
     },
     {
-      caption: "Balcony seating",
-      media: { type: "image", src: "/images/balcony.jpg", alt: "Balcony with a green table and two chairs in the morning sun" },
+      caption: "Balcony looking over the bazaar",
+      media: { type: "image", src: "/images/balcony-view.jpg", alt: "Balcony with a red table and chair, looking over rooftops to a wooded hill" },
+    },
+    {
+      caption: "Room with attached bathroom",
+      media: { type: "image", src: "/images/room-chevron-wide.jpg", alt: "Guest room with a double bed and the door to its attached bathroom" },
+    },
+    {
+      caption: "Attached bathroom with geyser",
+      media: { type: "image", src: "/images/bathroom.jpg", alt: "Bathroom with a western toilet, a shower and a water heater" },
+    },
+    {
+      caption: "Double-bed room from the door",
+      media: { type: "image", src: "/images/room-circles-door.jpg", alt: "Guest room seen from its doorway, with a double bed and a doormat" },
+    },
+    {
+      caption: "Corridor outside the rooms",
+      media: { type: "image", src: "/images/corridor.jpg", alt: "Covered corridor with a patterned tile floor and a white railing" },
+    },
+    {
+      caption: "Reception",
+      media: { type: "image", src: "/images/reception.jpg", alt: "Glass door of the reception with the guest house phone number on it" },
     },
     {
       caption: "The guest house in Malli Bazar",
