@@ -2,7 +2,6 @@ import { Amenities } from "@/components/amenities";
 import { Contact } from "@/components/contact";
 import { Faq } from "@/components/faq";
 import { Footer } from "@/components/footer";
-import { Gallery } from "@/components/gallery";
 import { GettingHere } from "@/components/getting-here";
 import { Header } from "@/components/header";
 import { Hero } from "@/components/hero";
@@ -12,10 +11,10 @@ import { ScrollFlag } from "@/components/scroll-flag";
 import { Temples } from "@/components/temples";
 import { site } from "@/content/site";
 
-// Structured data: helps search engines show the hotel's name, phone and location.
+// Structured data: helps search engines show the guest house's name, phone and location.
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Hotel",
+  "@type": "LodgingBusiness",
   name: site.name,
   url: site.url,
   telephone: site.phone.e164,
@@ -40,7 +39,6 @@ export default function Home() {
         <Rooms />
         <Temples />
         <Amenities />
-        <Gallery />
         <GettingHere />
         <Faq />
         <Contact />

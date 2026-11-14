@@ -1,51 +1,36 @@
 import { site } from "@/content/site";
-import { whatsappHref } from "@/lib/contact";
+import { CallButton, WhatsAppButton } from "./contact-buttons";
 import { RoomMediaView } from "./room-media";
 
+/** Photos of the rooms and the guest house. Room types and prices are confirmed on a call, not listed here. */
 export function Rooms() {
   return (
     <section id="rooms" className="shell py-20 md:py-28">
       <div className="max-w-2xl">
         <h2 className="font-display font-semibold tracking-tight text-4xl md:text-5xl">Rooms</h2>
         <p className="mt-4 text-lg text-stone">
-          Clean, simple rooms with what a family needs after a day of darshan. Tell us your dates and we will suggest
-          the right one.
+          Simple rooms with a double bed and an attached bathroom, in the middle of Bhowali. Call or message us with
+          your dates and we will tell you which rooms are free and the price.
         </p>
       </div>
 
-      <ul className="mt-12 grid gap-x-8 gap-y-12 md:grid-cols-3">
-        {site.rooms.map((room) => (
-          <li key={room.slug}>
-            <article className="group flex h-full flex-col">
+      <ul className="mt-12 grid gap-x-6 gap-y-10 sm:grid-cols-2">
+        {site.photos.map((photo) => (
+          <li key={photo.media.src}>
+            <figure className="group">
               <div className="relative aspect-4/3 overflow-hidden rounded-card bg-pine-100 shadow-lift">
-                <RoomMediaView media={room.media} />
+                <RoomMediaView media={photo.media} />
               </div>
-
-              <h3 className="mt-6 font-display font-semibold tracking-tight text-2xl">{room.name}</h3>
-              <p className="mt-2 text-stone">{room.summary}</p>
-
-              <ul className="mt-4 flex flex-col gap-1.5">
-                {room.facts.map((fact) => (
-                  <li key={fact} className="flex items-baseline gap-3">
-                    <span aria-hidden className="size-1.5 shrink-0 -translate-y-0.5 rounded-full bg-brass-500" />
-                    {fact}
-                  </li>
-                ))}
-              </ul>
-
-              <a
-                href={whatsappHref(`Namaste, please share the rate and availability for the ${room.name}.`)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 w-fit font-semibold text-pine-700 underline decoration-brass-400 decoration-2
-                           underline-offset-[6px] transition-colors hover:text-pine-950"
-              >
-                Ask about this room on WhatsApp
-              </a>
-            </article>
+              <figcaption className="mt-3 text-stone">{photo.caption}</figcaption>
+            </figure>
           </li>
         ))}
       </ul>
+
+      <div className="mt-12 flex flex-col gap-3 sm:flex-row">
+        <CallButton />
+        <WhatsAppButton />
+      </div>
     </section>
   );
 }

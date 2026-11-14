@@ -23,7 +23,7 @@ const muktaDevanagari = localFont({
 
 const title = `${site.name}, ${site.town}: rooms near Kainchi Dham and Ghorakhal temple`;
 const description =
-  "Hotel rooms in Bhowali, about 9 km from Kainchi Dham (Neem Karoli Baba ashram) and 3 km from the Ghorakhal Golu Devta temple. Call or WhatsApp to book.";
+  "Guest house rooms in Malli Bazar, Bhowali, about 9 km from Kainchi Dham (Neem Karoli Baba ashram) and 3 km from the Ghorakhal Golu Devta temple. Call or WhatsApp to book.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),

@@ -1,12 +1,12 @@
 import { site } from "@/content/site";
 
-/** The hotel sits between the two temples: this strip shows that at a glance. */
+/** The guest house sits between the two temples: this strip shows that at a glance. */
 export function RouteStrip({ className = "" }: { className?: string }) {
   const [ghorakhal, kainchi] = site.route;
 
   return (
     <ol
-      aria-label="Distance from the hotel to each temple"
+      aria-label="Distance from the guest house to each temple"
       className={`grid overflow-hidden rounded-card bg-pine-950/45 ring-1 ring-white/15 backdrop-blur-md md:grid-cols-3 ${className}`}
     >
       <Stop name={ghorakhal.name} distance={ghorakhal.distance} time={ghorakhal.time} />

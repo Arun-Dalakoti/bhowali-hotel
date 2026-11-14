@@ -1,6 +1,6 @@
-# Hotel website, Bhowali
+# The Kainchi Abode, Bhowali
 
-Home page for a hotel in Bhowali, written for guests visiting Kainchi Dham and the Ghorakhal Golu Devta temple.
+Home page for The Kainchi Abode guest house in Bhowali, written for guests visiting Kainchi Dham and the Ghorakhal Golu Devta temple.
 Guests book by phone or WhatsApp; there is no online booking.
 
 ## Stack
@@ -34,12 +34,12 @@ pnpm lint
 
 Everything marked `TODO` in `src/content/site.ts` is a placeholder:
 
-1. Hotel name, phone, WhatsApp number, email, address, Google Maps link, website address.
-2. Room names, descriptions and facts.
-3. The amenities list: confirm each item is really offered, remove the rest.
-4. Distances: they are approximate, measured from Bhowali town. Re-check from the hotel's exact location.
-5. Replace every file in `public/images/` with a real photo (keep the file names, or update the paths in `site.ts`).
-   The current images are illustrations with a "Placeholder image" tag.
+1. Email, the guest house's own Google Maps link, and the website address.
+2. The amenities list: it only has what the photos show. Confirm each item and add the rest (parking, meals).
+3. Distances: they are approximate, measured from Bhowali town. Re-check from the guest house.
+4. The Ghorakhal temple image is still an illustration with a "Placeholder image" tag. Replace
+   `public/images/ghorakhal-temple.jpg` with a photo you are allowed to use.
+5. Room types and prices are deliberately not listed: guests confirm those by phone or WhatsApp.
 6. Set `launched: true` in `site.ts`. Until then the site tells search engines not to list it.
 
 ## Adding photos
@@ -62,10 +62,13 @@ The credit then appears under the photo. For your own photos leave `credit: null
 
 ## Adding room videos
 
-In `src/content/site.ts`, change a room's `media` from an image to a video:
+In `src/content/site.ts`, add an entry to `photos` whose `media` is a video:
 
 ```ts
-media: { type: "video", src: "/videos/deluxe.mp4", poster: "/images/room-deluxe.jpg", alt: "Walk-through of the deluxe room" },
+{
+  caption: "Room walk-through",
+  media: { type: "video", src: "/videos/room.mp4", poster: "/images/room-circles.jpg", alt: "Walk-through of a guest room" },
+},
 ```
 
 Put the file in `public/videos/`. `src/components/room-media.tsx` already renders it.
@@ -74,6 +77,6 @@ Keep videos short and compressed (H.264 MP4, 720p, a few MB): most visitors are 
 ## Design notes
 
 - Colours: pine greens (the hills), brass (the bells at Ghorakhal), a cool mist background.
-- The hero's route strip shows the one fact visitors care about: the hotel sits between the two temples.
+- The hero's route strip shows the one fact visitors care about: the guest house sits between the two temples.
 - On phones a Call / WhatsApp bar slides in at the bottom once the hero buttons scroll out of view.
 - Motion: one entrance sequence in the hero, hover and open/close feedback elsewhere. Reduced-motion settings are respected.

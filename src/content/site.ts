@@ -13,17 +13,11 @@ export type RoomMedia =
 /** Photo credit, required by Creative Commons licences. Leave as null for your own photos. */
 export type PhotoCredit = { text: string; href: string } | null;
 
-export type Room = {
-  slug: string;
-  name: string;
-  summary: string;
-  facts: string[];
-  media: RoomMedia;
-};
+export type Photo = { caption: string; media: RoomMedia };
 
 export const site = {
-  // TODO: real hotel name
-  name: "Your Hotel Name",
+  name: "The Kainchi Abode",
+  kind: "Guest house",
   town: "Bhowali",
   region: "Nainital district, Uttarakhand",
   // TODO: real website address (used for link previews and search engines)
@@ -41,14 +35,14 @@ export const site = {
     number: "918384818281",
     // Already typed in the chat when a guest taps a WhatsApp button. They can edit it before sending.
     defaultMessage:
-      "Namaste, I want to book a room at your hotel in Bhowali. Please share the availability and price.\n\nDates: \nGuests: ",
+      "Namaste, I want to book a room at The Kainchi Abode, Bhowali. Please share the availability and price.\n\nDates: \nGuests: ",
   },
   // TODO: real email
   email: "hello@example.com",
-  // TODO: real street address
-  address: "Bhowali, Nainital district, Uttarakhand 263132",
+  // As written on the guest house's signboard.
+  address: "Malli Bazar, near Bhowali Temple, Bhowali, Nainital, Uttarakhand 263132",
   // TODO: the hotel's own Google Maps link
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Bhowali%2C+Uttarakhand",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=The+Kainchi+Abode+Malli+Bazar+Bhowali",
 
   hero: {
     place: "Bhowali, near Nainital",
@@ -71,29 +65,29 @@ export const site = {
     { name: "Kainchi Dham", distance: "about 9 km", time: "15 to 20 minutes by road" },
   ],
 
-  rooms: [
+  /**
+   * Photos of the guest house. Room types and prices are not listed: guests confirm those on a call.
+   * To add a photo: put the file in public/images/ and add a line here.
+   * To add a video later: { type: "video", src: "/videos/room.mp4", poster: "/images/room-circles.jpg", alt: "..." }
+   */
+  photos: [
     {
-      slug: "deluxe",
-      name: "Deluxe room", // TODO: real room names, details and photos
-      summary: "A comfortable double room for two, with an attached bathroom.",
-      facts: ["Sleeps 2", "Double bed", "Attached bathroom with hot water"],
-      media: { type: "image", src: "/images/room-deluxe.jpg", alt: "Deluxe room with a double bed and a window facing the hills" },
+      caption: "Double-bed room",
+      media: { type: "image", src: "/images/room-circles.jpg", alt: "Guest room with a double bed, a side cabinet and a black and white tiled floor" },
     },
     {
-      slug: "family",
-      name: "Family room",
-      summary: "More space and extra beds, so the whole family stays together.",
-      facts: ["Sleeps 4", "Double bed and two singles", "Attached bathroom with hot water"],
-      media: { type: "image", src: "/images/room-family.jpg", alt: "Family room with beds for four" },
+      caption: "Room with a window to the street",
+      media: { type: "image", src: "/images/room-chevron.jpg", alt: "Guest room with a double bed beside a curtained window" },
     },
     {
-      slug: "valley-view",
-      name: "Valley view room",
-      summary: "A double room with a wide window over the valley.",
-      facts: ["Sleeps 2", "Double bed", "Valley-facing window"],
-      media: { type: "image", src: "/images/room-valley.jpg", alt: "Valley view room with a large window" },
+      caption: "Balcony seating",
+      media: { type: "image", src: "/images/balcony.jpg", alt: "Balcony with a green table and two chairs in the morning sun" },
     },
-  ] satisfies Room[],
+    {
+      caption: "The guest house in Malli Bazar",
+      media: { type: "image", src: "/images/exterior.jpg", alt: "Front of The Kainchi Abode guest house, with its signboard on the balcony" },
+    },
+  ] satisfies Photo[],
 
   temples: [
     {
@@ -117,21 +111,14 @@ export const site = {
     },
   ],
 
-  // TODO: confirm every item with the hotel. Remove anything that is not offered.
+  // Only what the photos of the guest house show. Add more once confirmed (parking, meals and so on).
   amenities: [
-    { name: "Hot water", detail: "In every bathroom, morning and evening." },
-    { name: "Parking", detail: "Space for your car at the hotel." },
-    { name: "Vegetarian meals", detail: "Simple home-style food, made fresh." },
-    { name: "Wi-Fi", detail: "Free for guests." },
-    { name: "Taxi help", detail: "We can help arrange a taxi to the temples." },
-    { name: "Family friendly", detail: "Extra beds on request." },
-  ],
-
-  gallery: [
-    { src: "/images/gallery-balcony.jpg", alt: "Tea on the balcony, looking over the hills" },
-    { src: "/images/gallery-room.jpg", alt: "A guest room" },
-    { src: "/images/gallery-hills.jpg", alt: "The hills around Bhowali" },
-    { src: "/images/gallery-morning.jpg", alt: "Early morning in Bhowali" },
+    { name: "Hot water", detail: "A geyser in the attached bathroom." },
+    { name: "Wi-Fi", detail: "Available for guests." },
+    { name: "Balcony seating", detail: "A table and chairs outside, in the morning sun." },
+    { name: "Attached bathroom", detail: "With a western toilet and a shower." },
+    { name: "In the bazaar", detail: "Shops and taxis are a few steps away in Malli Bazar." },
+    { name: "CCTV", detail: "Cameras in the common areas." },
   ],
 
   // Approximate road distances from Bhowali town. TODO: re-check from the hotel's exact location.
@@ -146,12 +133,12 @@ export const site = {
 
   faqs: [
     {
-      q: "How far is Kainchi Dham from the hotel?",
+      q: "How far is Kainchi Dham from the guest house?",
       a: "About 9 km. The drive usually takes 15 to 20 minutes on the Nainital to Almora road.",
     },
     {
       q: "How do I book a room?",
-      a: "Call us or send a WhatsApp message with your dates and the number of guests. We will confirm availability and the rate straight away.",
+      a: "Call us or send a WhatsApp message with your dates and the number of guests. We will tell you which rooms are free and the price.",
     },
     {
       q: "Which is the nearest railway station and airport?",
