@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+/* A prefix that applies once the visitor has scrolled past the top of the page.
+   The <ScrollFlag /> component sets data-scrolled on <html>. */
+@custom-variant scrolled (&:where([data-scrolled="true"] *));
+
+@theme {
+  /* Deodar and pine: the hills around Bhowali */
+  --color-pine-950: #0f1d16;
+  --color-pine-900: #16291f;
+  --color-pine-800: #1d3a2c;
+  --color-pine-700: #27503b;
+  --color-pine-600: #356a4e;
+  --color-pine-300: #a9c4b1;
+  --color-pine-200: #c9dbcf;
+  --color-pine-100: #e3ece5;
+
+  /* Brass: the bells of Ghorakhal */
+  --color-brass-600: #96691a;
+  --color-brass-500: #b8862b;
+  --color-brass-400: #d2a644;
+  --color-brass-200: #ecd9a8;
+  --color-brass-100: #f7efd9;
+
+  --color-mist: #f1f4f0; /* page background: cool morning haze */
+  --color-paper: #fbfcfa; /* raised surfaces */
+  --color-ink: #16211b; /* text */
+  --color-stone: #55635a; /* secondary text */
+  --color-whatsapp: #25d366;
+
+  --radius-card: 1.25rem;
+  --radius-pill: 999px;
+
+  --shadow-lift: 0 1px 2px rgb(15 29 22 / 0.06), 0 12px 32px -12px rgb(15 29 22 / 0.22);
+
+  --ease-settle: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-rise: rise 0.9s var(--ease-settle) both;
+  --animate-settle: settle 2.6s var(--ease-settle) both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes settle {
+    from {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    35% {
+      opacity: 1;
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+}
+
+/* Fonts come from next/font in layout.tsx as CSS variables, so these point at other variables: inline. */
+@theme inline {
+  --font-sans: var(--font-jakarta), var(--font-mukta-devanagari), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-mukta-devanagari), ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-mist font-sans text-ink antialiased;
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brass-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-brass-200);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Page gutter and maximum width, used by every section */
+@utility shell {
+  width: 100%;
+  max-width: 76rem;
+  margin-inline: auto;
+  padding-inline: --spacing(5);
+
+  @variant md {
+    padding-inline: --spacing(8);
+  }
+}
